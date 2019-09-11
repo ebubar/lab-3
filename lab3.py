@@ -18,7 +18,10 @@ def p1(ingredients):
     :return: A new list containing ingredients with 'butter' removed
     :rtype: list
     """
-    return None
+    if 'butter' in ingredients:
+        ingredients = ingredients.copy()
+        ingredients.remove('butter')
+    return ingredients
 
 
 def p2(ingredients):
@@ -30,7 +33,9 @@ def p2(ingredients):
     :return: A new list containing ingredients with 'butter' removed
     :rtype: list
     """
-    return None
+    if 'butter' in ingredients:
+        ingredients.remove('butter')
+    return ingredients
 
 
 def p3(student_list, remove_when_id_contains):
@@ -46,7 +51,11 @@ def p3(student_list, remove_when_id_contains):
       remove_when_id_contains
     :rtype: list
     """
-    return None
+    output_list = []
+    for name, sid in student_list:
+        if remove_when_id_contains not in str(sid):
+            output_list.append((name, sid))
+    return output_list
 
 
 def bonus_question(student_list, digits_to_remove):
@@ -61,7 +70,16 @@ def bonus_question(student_list, digits_to_remove):
     :return: A new list of students with modified student IDs. s
     :rtype: list
     """
-    return None
+    output_list = []
+    for name, sid in student_list:
+        if digits_to_remove in str(sid):
+            new_sid = int(
+                str(sid).replace(digits_to_remove, '')
+            )
+            output_list.append((name, new_sid))
+        else:
+            output_list.append((name, sid))
+    return output_list
 
 
 if __name__ == '__main__':
